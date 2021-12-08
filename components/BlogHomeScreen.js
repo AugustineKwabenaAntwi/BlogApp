@@ -9,7 +9,7 @@ export default function BlogHomeScreen() {
         BlogImage: require("../assets/images/blog-img-3.png"),
         AuthorName:"Ga Mantse",
         AuthorImage:require("../assets/images/profile01.jpg")},
-        {title : "Does Banku Actually Improve Your Health",
+        {title : "Can You  Make Bank?",
         BlogImage: require("../assets/images/blog-img-1.png"),
         AuthorName:"Ga Mantse",
         AuthorImage:require("../assets/images/profile02.jpg")},
@@ -45,27 +45,21 @@ export default function BlogHomeScreen() {
 
 
     return (
-        <Blog/>
-            
-            
-            /* <FlatList
-            // data =   {BlogList}   
-            // renderItem = {({item})=>{
-            //     return(
-            //         <View>
-            //             <Text>{item.title}</Text>
-            //             <Text>{item.AuthorName}</Text>
-            //             <View style= {{flexDirection:'row'}}>
-            //             <Image style={{width:150,height:150} } source={item.BlogImage}/>
-            //             <Image style={{width:150,height:150} } source={item.AuthorImage}/>
+        <View>
+            <FlatList
+                data ={BlogList}
+                renderItem = {({item})=>{
+                    return  <Blog
+                    title = {item.title}
+                    BlogImage={item.BlogImage}
+                    AuthorName={item.AuthorName}
+                    AuthorImage={item.AuthorImage}
+                    />
+                }}
+                keyExtractor = {(item)=>item.title}
 
-            //             </View>
-            //         </View>
-            //     )
-            // }}
-            // keyExtractor = {(item)=>item.title}       
-            
-            /> */
+            />
+        </View>
         
     )
 }

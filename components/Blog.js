@@ -2,21 +2,25 @@ import React from 'react'
 import { Image, Text, View,StyleSheet } from 'react-native'
 import BlogHomeScreen from './BlogHomeScreen'
 
-export default function Blog() {
+export default function Blog({title,BlogImage,AuthorName,AuthorImage}) {
     return (
         <View style = {styles.container}>
-            <Image style={styles.image} source ={require("../assets/images/blog-img-1.png")} />
+            <View style = {styles.imagebox}>
+            <Image style={styles.image} source ={BlogImage} />
+            </View>
             <View style = {styles.infoContainer}>
+                <View style={styles.container2}>
                 <View style = {styles.titleTextContainer}>
                     <Text numberOfLines={3} style={styles.titleText}>
-                        Does Dry is January Actually 
-                        Improve Your Health?
+                       {title}
                     </Text>
                 </View>
-                <View>
-                    <Image/>
-                    <Text>Subash pratash</Text>
-                    <Text>5min read</Text>
+                <View style={styles.authorDetail}>
+                    <Image style = {styles.profileImage} source = {AuthorImage}/>
+                    <Text style={styles.authorName}>{AuthorName}</Text>
+                    <Text style={styles.readTime}>5min read</Text>
+                </View>
+
                 </View>
             </View>
         </View>
@@ -28,21 +32,56 @@ export default function Blog() {
 
 const styles= StyleSheet.create({
  container:{
-     display:"flex",
      backgroundColor:"white",
-     marginHorizontal:10,
-     flexDirection:"row"
+     marginHorizontal:5,
+     flexDirection:"row",
+     marginVertical:10,
+     elevation:4,
+ },
+ imagebox:{
+    backgroundColor:"white",
+    width:130,
+    height:150,
+    elevation:8,
  },
  image:{
      width:130,
-     height:150
+     height:150,
+     borderWidth:2,
+     borderColor:"#fff",
  },
  infoContainer:{
-     alignItems:"flex-start",
-     justifyContent:"center"
+    marginHorizontal:10,
+    justifyContent:"center",
+    alignItems:"flex-start",
+ },
+ titleTextContainer:{
+     flexDirection:'row'
+
  },
  titleText:{
+     flex:1,
      fontWeight:"bold",
-     fontSize:16
+     fontSize:18,
+ },
+ profileImage:{
+     width:30,
+     height:30,
+     borderRadius:100
+ },
+ authorDetail:{
+     marginTop:20,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-between"
+ },
+ authorName:{
+     fontSize:14,
+     marginLeft:10,
+ },
+ readTime:{
+     fontSize:12,
+     color:"gray",
+    marginLeft:20
  }
 });
