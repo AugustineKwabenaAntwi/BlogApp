@@ -1,16 +1,19 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
 import { Image, Text, View,StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import BlogHomeScreen from './BlogHomeScreen'
 
-export default function Blog({title,BlogImage,AuthorName,AuthorImage}) {
+export default function Blog({title,BlogImage,AuthorName,AuthorImage,navigation}) {
     return (
-        <View style = {styles.container}>
+        <View
+             style = {styles.container}>
             <View style = {styles.imagebox}>
             <Image style={styles.image} source ={BlogImage} />
             </View>
             <View style = {styles.infoContainer}>
                 <View style={styles.container2}>
-                <View style = {styles.titleTextContainer}>
+                <View  style = {styles.titleTextContainer}>
                     <Text numberOfLines={3} style={styles.titleText}>
                        {title}
                     </Text>
@@ -39,7 +42,6 @@ const styles= StyleSheet.create({
      elevation:4,
  },
  imagebox:{
-    backgroundColor:"white",
     width:130,
     height:150,
     elevation:8,

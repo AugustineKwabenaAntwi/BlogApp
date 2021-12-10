@@ -1,9 +1,8 @@
 import React from 'react'
-import {View,ScrollView,Text,FlatList, Image} from 'react-native'
+import {View,ScrollView,Text,FlatList, Image, TouchableOpacity} from 'react-native'
 import Blog from './Blog'
-import BlogPostScreen from './BlogPostScreen'
 
-export default function BlogHomeScreen() {
+export default function BlogHomeScreen({navigation}) {
     const BlogList= [
         {title : "Does Banku Actually Improve Your Health",
         BlogImage: require("../assets/images/blog-img-3.png"),
@@ -49,12 +48,19 @@ export default function BlogHomeScreen() {
             <FlatList
                 data ={BlogList}
                 renderItem = {({item})=>{
-                    return  <Blog
+                    return  (
+                        <TouchableOpacity onPress = {()=>{navigation.navigate("BlogPost",{newtitle : item.title,
+                        newBlogImage:item.BlogImage,
+                        newAuthorName:item.AuthorName,
+                        newAuthorImage:item.AuthorImage})}}>
+                            <Blog
                     title = {item.title}
                     BlogImage={item.BlogImage}
                     AuthorName={item.AuthorName}
                     AuthorImage={item.AuthorImage}
                     />
+                        </TouchableOpacity>
+                    )
                 }}
                 keyExtractor = {(item)=>item.title}
 
